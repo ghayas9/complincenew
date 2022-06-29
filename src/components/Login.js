@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import axios from './axios'
 import Loader from './Loader'
 
 import { useNavigate } from 'react-router-dom';
@@ -40,7 +40,7 @@ export default function () {
     const body = { email, password }
     try {
       setLoad(true)
-      const x = await axios.post('http://localhost:9000/compony/login', body)
+      const x = await axios.post('/compony/login', body)
       action.LogIn(x.data)
     } catch (err) {
       console.log('err',err.response.data);
