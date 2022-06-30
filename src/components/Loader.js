@@ -1,7 +1,18 @@
-import React from 'react'
-
-export default function Loader() {
-  return (
-    <div>Loader</div>
-  )
+import React from 'react';
+const Loader = () => {
+    return (
+        <div style={{
+            height:'100px',
+            position:'relative'
+        }}>
+            <div class="loader" >
+            <div class="inner one"></div>
+            <div class="inner two"></div>
+            <div class="inner three"></div>
+            </div>
+        </div>
+        
+    );
 }
+
+export default Loader;

@@ -9,62 +9,43 @@ export default function Registration() {
   const [email,setemail] = useState('')
   const [contact,setcontact] = useState('')
   return (
-      <div className="container">
-        <div className="row">
-          <div className="col-12 mb-5">
-
-            <h2 style={{fontWeight:'bolder'}}>Registration Compony</h2>
-
-            <h5>Register new Compony</h5>
-          </div>
-          <div className="col-12"></div>
-          
-          <div className="col-md-4 mb-5">
-          <label htmlFor="">Compony Name</label>
-          <br />
-            <input type="text" value={name} onChange={(e)=>{
-              setName(e.target.value)
-            }}/>
-          </div>
-          <div className="col-md-4 mb-5">
-          <label htmlFor="">Compony Email</label>
-          <br />
-          <input type="text" value={email} onChange={(e)=>{
-              setemail(e.target.value)
-            }}/>
-          </div>
-          <div className="col-md-4 mb-5">
-            
-          </div>
-          <div className="col-md-4 mb-3">
-          <label htmlFor="">Compony Contact</label>
-          <br />
-          <input type="text" value={contact} onChange={(e)=>{
-              setcontact(e.target.value)
-            }}/>
-          </div>
-          <div className="col-md-4 mb-3">
-          <label htmlFor="">Password</label>
-          <br />
-          <input type="password" value={password} onChange={(e)=>{
-              setpassword(e.target.value)
-            }}/>
-          </div>
-          <div className="col-md-4 mb-3">
-            
-          </div>
-          <div className="col-md-4 mb-3">
-            <button className='btn btn-primary' style={{
-              width:'60%'
-            }}>Cancel</button>
-          </div>
-          <div className="col-md-4 mb-3">
-          <button className='btn btn-primary'>Register</button>
-          </div>
-          <div className="col-md-4 mb-3">
-            
-          </div>
+    <div className="container d-flex justify-content-center">
+       <div className="container-r ">
+        <div className="title">Registration</div>
+        <div className="content">
+          <form action="#">
+            <div className="user-details">
+              <div className="input-box">
+                <span className="details">Name</span>
+                <input type="text" placeholder="Enter Company Name"  value={name} onChange={(e)=>{
+                  setName(e.target.value)
+                }}/>
+              </div>
+              <div className="input-box">
+                <span className="details">Email</span>
+                <input type="text" placeholder="Enter Company Email" value={email} onChange={(e)=>{
+                  setemail(e.target.value)
+                }}/>
+              </div>
+              <div className="input-box">
+                <span className="details">Contact</span>
+                <input type="text" placeholder="Enter Company Number" value={contact} onChange={(e)=>{
+                  setcontact(e.target.value)
+                }}/>
+              </div>
+              <div className="input-box">
+                <span class="details">Password</span>
+                <input type="text" placeholder="Enter  password" value={password} onChange={(e)=>{
+                  setpassword(e.target.value)
+                }}/>
+              </div>
+            </div>
+            <div className="button">
+              <input type="submit" value="Register"/>
+            </div>
+          </form>
         </div>
       </div>
+     </div>
   )
 }

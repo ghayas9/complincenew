@@ -39,6 +39,7 @@ export default function Employ() {
   };
   return (
     <div className="container-fluid ">
+    
        {IDP?<div>
           <Webcam
           ref={webcamRef}

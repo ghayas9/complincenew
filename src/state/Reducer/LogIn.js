@@ -7,8 +7,16 @@ const init = null
 const LogIn = (state = init , action) =>{
     if(action.type===LogInC){
         localStorage.setItem('token', action.payload.token);
-        
-        return action.payload
+        jwt.verify(action.payload.token,JwtKey,(err,data)=>{
+            if(err){
+                state = null
+            }else{
+                state = {}
+                state.data = data
+                state.token =action.payload.token
+            }
+        })
+        return state
     }
     else if(action.type===LogOutC){
         localStorage.removeItem('token')
@@ -22,7 +30,9 @@ const LogIn = (state = init , action) =>{
                     if(err){
                         state = null
                     }else{
-                        state = data
+                        state = {}
+                        state.data = data
+                        state.token =token
                     }
             })
             }else{

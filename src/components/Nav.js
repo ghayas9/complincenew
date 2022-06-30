@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate ,Link} from 'react-router-dom';
 
 
 ///////////////SET REDUX//////////////
@@ -19,31 +19,22 @@ export default function Nav() {
   const nv = useNavigate()
   const state = useSelector((state)=>state.LogIn)
   return (
-    <div className="container">
-      <nav className="navbar navbar-expand-lg navbar-light">
-      <a className="navbar-brand" href="#"><h5 style={{
-        color:'blue'
-      }}>Compny Name</h5></a>
+  <nav className="navbar navbar-dark navbar-expand-md m-2 mb-4 sticky-top" style={{background:'gray'}}>
+  <Link to={'/'} className="navbar-brand m-0"><h4 >Name</h4></Link>
+  <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb" aria-expanded="true">
+    <span className="navbar-toggler-icon"></span>
+  </button>
+  <div id="navb" className="navbar-collapse collapse hide">
 
-      <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
-        
-      </div>
-      <div className="form-inline my-2 m-lg-0">
-          {state?null:<button className='btn border border-primary rounded-pill mx-3'onClick={()=>{
-            nv('/register')
-          }}>Register</button>}
-          {state?null:<button className='btn btn-primary border border-primary rounded-pill px-4'onClick={()=>{
-            
-            nv('/login')
-          }} >Login</button>}
-          {!state?null:<button className='btn btn-danger border border-danger rounded-pill px-4 mx-3' onClick={()=>{
+    <ul className="nav navbar-nav ml-auto">
+        {state?null:<Link to={'/register'} className='nav-item m-1 btn btn-primary  '>Register </Link>}
+        {state?null:<Link to={'/login'} className='nav-item m-1 btn btn-primary ' >Login</Link>}
+        {!state?null:<button className='nav-item m-1 btn btn-danger ' onClick={()=>{
             action.LogOut()
             nv('/login')
           }}>LogOut</button>}
-          
-          
-      </div>
-  </nav>
-    </div>
+    </ul>
+  </div>
+</nav>
   )
 }
