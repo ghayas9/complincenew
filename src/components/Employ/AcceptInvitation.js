@@ -23,7 +23,8 @@ export default function AcceptInvitation() {
         setImagep(imageSrc) 
   })
 
-  const sub = async()=>{
+  const sub = async(e)=>{
+    e.preventDefault()
     
         try{
           const res = await axios.post('/join',{IdCard:image,Profile:imagep,token})
