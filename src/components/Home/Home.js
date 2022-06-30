@@ -33,8 +33,9 @@ function Home() {
        <div class="container ">
           <div className="crud shadow-lg p-3 mb-5 mt-5 bg-body rounded"> 
           <div className="row ">
+          <div className="col-md-4 mb-3 text-gred" style={{color:"green"}}><h2><b>All Employies</b></h2></div>
            <div class="col-md-4 mb-3 text-gred">
-           <div className="col-md-4 mb-3 text-gred" style={{color:"green"}}><h2><b>All Employies</b></h2></div>
+          
               <div className="search">
                 <form className="form-inline">
                  <input className="form-control mr-sm-2" type="search" placeholder="Employ" aria-label="Search"/>
