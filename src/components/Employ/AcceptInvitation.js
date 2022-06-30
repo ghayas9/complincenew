@@ -68,11 +68,18 @@ export default function AcceptInvitation() {
       screenshotFormat="image/jpeg"
       height = {100 + '%'}
         width = {100 + '%'}
-      videoConstraints={
+    // //   videoConstraints={
 
-        {
-        facingMode: "user"
-      }}
+    // //     {
+    // //     facingMode: "user"
+    // //   }
+    // // }
+    videoConstraints={{
+      facingMode: {
+        exact: 'environment'
+      }
+    }}
+
       
       />
       <button className='btn btn-primary mb-3'onClick={(e)=>{
