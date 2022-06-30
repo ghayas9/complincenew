@@ -26,7 +26,7 @@ export default function AcceptInvitation() {
   const sub = async()=>{
     
         try{
-          const res = await axios.post('/new',{IdCard:image,Profile:imagep})
+          const res = await axios.post('/join',{IdCard:image,Profile:imagep,token})
           alert('add')
           console.log(res);
           
