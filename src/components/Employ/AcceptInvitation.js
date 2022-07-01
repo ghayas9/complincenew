@@ -47,9 +47,9 @@ export default function AcceptInvitation() {
         ref={webcamRef}
         audio={false}
         screenshotFormat="image/jpeg"
-        width = {100 + '%'}
-        style={{ transformOrigin: '0 0', transform: `translateX(${(480 + 640) / 2}px) rotate(90deg)` }}
         videoConstraints={{
+          width: 720,
+          height: 300,
           facingMode: {
             exact: 'environment'
           }
