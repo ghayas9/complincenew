@@ -5,7 +5,7 @@ import './App.css';
 import Register from './components/Register/Register';
 import LogIn from './components/LogIn/LogIn'
 import Home from './components/Home/Home'
-import AcceptInvitation from './components/Employ/AcceptInvitation';
+import AcceptInvitation from './components/Employ/Accept';
 
 
 

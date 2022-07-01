@@ -17,22 +17,30 @@ export default function Employ() {
   const [imagep,setImagep]=useState('')
   const webcamRef = useRef(null)
 
-  const CaptureIdCard = useCallback(async()=>{
-    const imageSrc = webcamRef.current.getScreenshot();
 
-        setImage(imageSrc)
-          
-  })
-  const CapturePP = useCallback(async()=>{
-    const imageSrc = webcamRef.current.getScreenshot();
-        setImagep(imageSrc) 
-  })
-
-  function handleTakePhoto (dataUri) {
-    // Do stuff with the photo...
-    // console.log('takePhoto');
-    setImage(dataUri)
+  
+  const CaptureIdCard = (imageSrc)=>{
+    setImage(imageSrc)
   }
+  const CapturePP = (imageSrc)=>{
+    setImagep(imageSrc)
+  }
+  // const CaptureIdCard = useCallback(async()=>{
+  //   const imageSrc = webcamRef.current.getScreenshot();
+
+  //       setImage(imageSrc)
+          
+  // })
+  // const CapturePP = useCallback(async()=>{
+  //   const imageSrc = webcamRef.current.getScreenshot();
+  //       setImagep(imageSrc) 
+  // })
+
+  // function handleTakePhoto (dataUri) {
+  //   // Do stuff with the photo...
+  //   // console.log('takePhoto');
+  //   setImage(dataUri)
+  // }
   const sub = async()=>{
     
         try{
@@ -45,9 +53,9 @@ export default function Employ() {
           console.log(err);
         } 
   }
-  const videoConstraints = {
-    facingMode: "user"
-  };
+  // const videoConstraints = {
+  //   facingMode: "user"
+  // };
   return (
     <div className="container-fluid ">
     
@@ -67,16 +75,19 @@ export default function Employ() {
           <Camera
     // idealFacingMode = {FACING_MODES.ENVIRONMENT}
         idealFacingMode = {FACING_MODES.USER}
-      onTakePhoto = { (dataUri) => { handleTakePhoto(dataUri); } }
+      onTakePhoto = { (dataUri) => { 
+        CaptureIdCard(dataUri); 
+        setIDP(false)
+      } }
     />
-          <button className='btn btn-primary mb-3'onClick={(e)=>{
+          {/* <button className='btn btn-primary mb-3'onClick={(e)=>{
             e.preventDefault();
             CaptureIdCard();
             setIDP(false)
-          }}>Take</button>
+          }}>Take</button> */}
         </div>:
         PP?<div>
-        <Webcam
+        {/* <Webcam
         ref={webcamRef}
         audio={false}
         screenshotFormat="image/jpeg"
@@ -88,7 +99,15 @@ export default function Employ() {
           facingMode: "user"
         }}
         
-        />
+        /> */}
+        <Camera
+    // idealFacingMode = {FACING_MODES.ENVIRONMENT}
+        idealFacingMode = {FACING_MODES.USER}
+      onTakePhoto = { (dataUri) => { 
+        CaptureIdCard(dataUri); 
+        setIDP(false)
+      } }
+    />
         <button className='btn btn-primary mb-3'onClick={(e)=>{
           e.preventDefault();
           CapturePP();
