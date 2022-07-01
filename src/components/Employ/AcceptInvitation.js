@@ -48,8 +48,8 @@ export default function AcceptInvitation() {
         audio={false}
         screenshotFormat="image/jpeg"
         videoConstraints={{
-          width: 720,
-          height: 100,
+          width: 300,
+          height: 720,
           facingMode: {
             exact: 'environment'
           }
