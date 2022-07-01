@@ -16,10 +16,12 @@ export default function AcceptInvitation() {
   const CaptureIdCard = (imageSrc)=>{
         setImage(imageSrc) 
         setIDP(false)  
+        setPP(false) 
   }
   const CapturePP = (imageSrc)=>{
         setImagep(imageSrc) 
         setPP(false) 
+        setIDP(false)  
   }
 
   const sub = async(e)=>{
@@ -41,20 +43,18 @@ export default function AcceptInvitation() {
 {image!==''?<img src={image} alt="" style={{with:'100px',height:'100px'}} />:null}
 {imagep!==''?<img src={imagep} alt="" style={{with:'100px',height:'100px'}}/>:null}
 {
-    IDP?<div>
+    IDP?
        <Camera
     // idealFacingMode = {FACING_MODES.ENVIRONMENT}
         idealFacingMode = {FACING_MODES.USER}
       onTakePhoto = { (dataUri) => { CapturePP(dataUri); } }
-    />
-      </div>:
-      PP?<div>
+    />:
+      PP?
       <Camera
     // idealFacingMode = {FACING_MODES.ENVIRONMENT}
         idealFacingMode = {FACING_MODES.USER}
       onTakePhoto = { (dataUri) => { CaptureIdCard(dataUri); } }
-    />
-    </div>:
+    />:
     <div className="container d-flex justify-content-center">
     <div className="container-r ">
             <div className="title">Join</div>
