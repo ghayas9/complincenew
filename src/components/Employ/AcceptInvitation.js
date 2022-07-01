@@ -48,6 +48,7 @@ export default function AcceptInvitation() {
         audio={false}
         screenshotFormat="image/jpeg"
         width = {100 + '%'}
+        style={{ transformOrigin: '0 0', transform: `translateX(${(480 + 640) / 2}px) rotate(90deg)` }}
         videoConstraints={{
           facingMode: {
             exact: 'environment'
