@@ -45,17 +45,21 @@ export default function AcceptInvitation() {
 {
     IDP?
        <Camera
-    // idealFacingMode = {FACING_MODES.ENVIRONMENT}
-        // idealFacingMode = {FACING_MODES.USER}
         idealFacingMode = {FACING_MODES.ENVIRONMENT}
-      onTakePhoto = { (dataUri) => { CapturePP(dataUri); } }
+        onTakePhoto = {(e)=>{
+        setImage(e) 
+        setIDP(false)  
+        setPP(false) 
+        }}
     />:
       PP?
       <Camera
-    // idealFacingMode = {FACING_MODES.ENVIRONMENT}
-        // idealFacingMode = {FACING_MODES.ENVIRONMENT}
         idealFacingMode = {FACING_MODES.USER}
-      onTakePhoto = { (dataUri) => { CaptureIdCard(dataUri); } }
+        onTakePhoto = {(e)=>{
+            setImagep(e) 
+            setIDP(false)  
+            setPP(false) 
+            }}
     />:
     <div className="container d-flex justify-content-center">
     <div className="container-r ">
