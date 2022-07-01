@@ -47,7 +47,7 @@ export default function App() {
 
       {/* <Route path="/home" element={<Home/>}/> */}
 
-      
+
       
       <Route path="/invite" element={<InviteUser/>}/>
       <Route path="/new" element={<Employ/>}/>
