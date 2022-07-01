@@ -47,7 +47,7 @@ export default function AcceptInvitation() {
         ref={webcamRef}
         audio={false}
         screenshotFormat="image/jpeg"
-        // width = {100 + '%'}
+        width = {100 + '%'}
         videoConstraints={{
           facingMode: {
             exact: 'environment'
@@ -65,19 +65,13 @@ export default function AcceptInvitation() {
       ref={webcamRef}
       audio={false}
       screenshotFormat="image/jpeg"
-      // height = {100 + '%'}
-        // width = {100 + '%'}
+      width = {100 + '%'}
       videoConstraints={
 
         {
         facingMode: "user"
       }
     }
-    // videoConstraints={{
-    //   facingMode: {
-    //     exact: 'environment'
-    //   }
-    // }}
 
       
       />
