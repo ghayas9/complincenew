@@ -12,13 +12,6 @@ import 'react-html5-camera-photo/build/css/index.css';
 
 function App (props) {
 
-    useEffect(async()=>{
-        if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
-            console.log("Let's get this party started")
-          }
-          navigator.mediaDevices.getUserMedia({video: true})
-          await navigator.mediaDevices.enumerateDevices();
-    })
   function handleTakePhoto (dataUri) {
     // Do stuff with the photo...
     console.log('takePhoto');

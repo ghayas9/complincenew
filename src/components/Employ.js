@@ -2,8 +2,14 @@ import React, { useState ,useRef, useCallback} from 'react'
 import Webcam from "react-webcam";
 import axios from './axios';
 
+import Camera, { FACING_MODES, IMAGE_TYPES } from 'react-html5-camera-photo';
+import { useEffect } from 'react';
+import 'react-html5-camera-photo/build/css/index.css';
 
 export default function Employ() {
+
+  
+
   const [IDP,setIDP]= useState(false)
   const [PP,setPP]= useState(false)
 
@@ -22,6 +28,11 @@ export default function Employ() {
         setImagep(imageSrc) 
   })
 
+  function handleTakePhoto (dataUri) {
+    // Do stuff with the photo...
+    // console.log('takePhoto');
+    setImage(dataUri)
+  }
   const sub = async()=>{
     
         try{
@@ -41,7 +52,7 @@ export default function Employ() {
     <div className="container-fluid ">
     
        {IDP?<div>
-          <Webcam
+          {/* <Webcam
           ref={webcamRef}
           audio={false}
           screenshotFormat="image/jpeg"
@@ -52,7 +63,12 @@ export default function Employ() {
               exact: 'environment'
             }
           }}
-          />
+          /> */}
+          <Camera
+    // idealFacingMode = {FACING_MODES.ENVIRONMENT}
+        idealFacingMode = {FACING_MODES.USER}
+      onTakePhoto = { (dataUri) => { handleTakePhoto(dataUri); } }
+    />
           <button className='btn btn-primary mb-3'onClick={(e)=>{
             e.preventDefault();
             CaptureIdCard();
