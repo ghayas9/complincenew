@@ -1,5 +1,7 @@
 import {useState} from 'react';
 import { Button} from 'react-bootstrap';
+import axios from '../../Config/Config';
+import Loading from '../Loading/Loading';
 
 import React, { useEffect } from 'react'
 
@@ -21,14 +23,38 @@ function Home() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    useEffect(()=>{
+    const [user,setUser]=useState([])
+    const [load,setload] = useState(false)
+    const getUser = async()=>{
+        try{
+              const body = {}
+              setload(true)
+              const x = await axios.post('/company/empolyies',body,{
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${state.token}`
+                },
+                
+              })
+              const data = await x.data.Employies
+            setUser(data)
+            console.log(user);
+        }catch(err){
+            console.log(err);
+        }finally{
+            setload(false)
+        }
+        
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(async()=>{
         if(!state){
           nv('/login')
         }else{
-            console.log('get Data');
+            await getUser()
             console.log(state.token);
         }
-      },[state])
+      },[])
   return (
        <div class="container ">
           <div className="crud shadow-lg p-3 mb-5 mt-5 bg-body rounded"> 
@@ -60,20 +86,27 @@ function Home() {
                         </tr>
                     </thead>
                     <tbody>    
-                        <tr>
-                            <td>1</td>
-                            <td>Image</td>
-                            <td>Name</td>
-                            <td>01/01/0101</td>
+                       {
+                        load?<Loading/>:
+                        
+                        user.map((e,i)=>{
+                            return (<tr>
+                            <td>{i+1}</td>
+                            <td>{e.name}</td>
+                            <td>{e.email}</td>
+                            <td>{e.updatedAt}</td>
                             <td>
                                 <button className='btn btn-secondary ml-1'><i className="material-icons" style={{color:'#10ab80'}}>&#xE417;</i></button>
                                 <button className='btn btn-secondary ml-1'><i className="material-icons" style={{color:'red'}}>&#xE872;</i> 
                                </button>
                                 
                             </td>
-                        </tr>
+                        </tr>)
+                        })
+                       }
                     </tbody>
                 </table>
+                {user.length<1?<h6>Not Found Now</h6>:null}
             </div>   
         </div>  
 

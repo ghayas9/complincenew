@@ -45,7 +45,7 @@ export default function AcceptInvitation() {
   }
 
   return (
-    load?Loading:
+    load?<Loading/>:
     <>
     
     <div className="container">
