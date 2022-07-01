@@ -46,6 +46,8 @@ export default function AcceptInvitation() {
     IDP?
        <Camera
         idealFacingMode = {FACING_MODES.ENVIRONMENT}
+        isFullscreen={true}
+        isMaxResolution = {true}
         onTakePhoto = {(e)=>{
         setImage(e) 
         setIDP(false)  
@@ -55,6 +57,8 @@ export default function AcceptInvitation() {
       PP?
       <Camera
         idealFacingMode = {FACING_MODES.USER}
+        isFullscreen={true}
+        isMaxResolution = {true}
         onTakePhoto = {(e)=>{
             setImagep(e) 
             setIDP(false)  
