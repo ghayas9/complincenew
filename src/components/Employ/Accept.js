@@ -53,7 +53,8 @@ export default function AcceptInvitation() {
       PP?
       <Camera
     // idealFacingMode = {FACING_MODES.ENVIRONMENT}
-        idealFacingMode = {FACING_MODES.ENVIRONMENT}
+        // idealFacingMode = {FACING_MODES.ENVIRONMENT}
+        idealFacingMode = {FACING_MODES.USER}
       onTakePhoto = { (dataUri) => { CaptureIdCard(dataUri); } }
     />:
     <div className="container d-flex justify-content-center">
