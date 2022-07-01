@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from '../../Config/Config';
 import { useParams } from 'react-router-dom'
 
-import Camera, { FACING_MODES, IMAGE_TYPES } from 'react-html5-camera-photo';
+import Camera, { FACING_MODES } from 'react-html5-camera-photo';
 
 export default function AcceptInvitation() {
     const { token } = useParams()
@@ -46,13 +46,14 @@ export default function AcceptInvitation() {
     IDP?
        <Camera
     // idealFacingMode = {FACING_MODES.ENVIRONMENT}
-        idealFacingMode = {FACING_MODES.USER}
+        // idealFacingMode = {FACING_MODES.USER}
+        idealFacingMode = {FACING_MODES.ENVIRONMENT}
       onTakePhoto = { (dataUri) => { CapturePP(dataUri); } }
     />:
       PP?
       <Camera
     // idealFacingMode = {FACING_MODES.ENVIRONMENT}
-        idealFacingMode = {FACING_MODES.USER}
+        idealFacingMode = {FACING_MODES.ENVIRONMENT}
       onTakePhoto = { (dataUri) => { CaptureIdCard(dataUri); } }
     />:
     <div className="container d-flex justify-content-center">
