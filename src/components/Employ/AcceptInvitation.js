@@ -47,7 +47,6 @@ export default function AcceptInvitation() {
         ref={webcamRef}
         audio={false}
         screenshotFormat="image/jpeg"
-        height = {50 + '%'}
         width = {100 + '%'}
         videoConstraints={{
           facingMode: {
