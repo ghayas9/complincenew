@@ -1,12 +1,26 @@
 import React, { useState } from 'react'
 import axios from '../../Config/Config';
 import { useParams } from 'react-router-dom'
+import Loading from '../Loading/Loading';
 
 import Camera, { FACING_MODES } from 'react-html5-camera-photo';
 
-export default function AcceptInvitation() {
-    const { token } = useParams()
+///////////////SET REDUX//////////////
+import { useDispatch } from 'react-redux';
+import * as actionCreator from "../../state/Action/action"
+import { bindActionCreators } from 'redux';
+///////////////SET REDUX//////////////
 
+
+export default function AcceptInvitation() {
+
+        ///////////////SET REDUX//////////////
+        const dispatch = useDispatch()
+        const action = bindActionCreators(actionCreator, dispatch)
+        ///////////////SET REDUX//////////////
+
+    const { token } = useParams()
+    const [load,setload] = useState(false)
     const [IDP,setIDP]= useState(false)
     const [PP,setPP]= useState(false)
 
@@ -17,18 +31,23 @@ export default function AcceptInvitation() {
     e.preventDefault()
     
         try{
+            setload(true)
           const res = await axios.post('/join',{IdCard:image,Profile:imagep,token})
-          alert('add')
+         action.SuccessMessage({title:'success',txt:res.data.message})
           console.log(res);
           
         }catch(err){
           alert('error')
           console.log(err);
-        } 
+        } finally{
+            setload(false)
+        }
   }
 
   return (
+    load?Loading:
     <>
+    
     <div className="container">
         {image!==''?<img src={image} alt="" style={{with:'100px',height:'100px'}} />:null}
         {imagep!==''?<img src={imagep} alt="" style={{with:'100px',height:'100px'}}/>:null}
@@ -38,7 +57,6 @@ export default function AcceptInvitation() {
     IDP?<div className="container">
        <Camera
         idealFacingMode = {FACING_MODES.ENVIRONMENT}
-        isFullscreen={true}
         isMaxResolution = {true}
         onTakePhoto = {(e)=>{
             setImage(e) 
@@ -49,7 +67,6 @@ export default function AcceptInvitation() {
       PP?<div className="container">
       <Camera
         idealFacingMode = {FACING_MODES.USER}
-        isFullscreen={true}
         isMaxResolution = {true}
         onTakePhoto = {(e)=>{
             setImagep(e) 
