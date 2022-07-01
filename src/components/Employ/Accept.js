@@ -8,21 +8,10 @@ export default function AcceptInvitation() {
     const { token } = useParams()
 
     const [IDP,setIDP]= useState(false)
-  const [PP,setPP]= useState(false)
+    const [PP,setPP]= useState(false)
 
-  const [image,setImage]=useState('')
-  const [imagep,setImagep]=useState('')
-
-  const CaptureIdCard = (imageSrc)=>{
-        setImage(imageSrc) 
-        setIDP(false)  
-        setPP(false) 
-  }
-  const CapturePP = (imageSrc)=>{
-        setImagep(imageSrc) 
-        setPP(false) 
-        setIDP(false)  
-  }
+    const [image,setImage]=useState('')
+    const [imagep,setImagep]=useState('')
 
   const sub = async(e)=>{
     e.preventDefault()
@@ -39,32 +28,35 @@ export default function AcceptInvitation() {
   }
 
   return (
- <div className="container">
-{image!==''?<img src={image} alt="" style={{with:'100px',height:'100px'}} />:null}
-{imagep!==''?<img src={imagep} alt="" style={{with:'100px',height:'100px'}}/>:null}
+    <>
+    <div className="container">
+        {image!==''?<img src={image} alt="" style={{with:'100px',height:'100px'}} />:null}
+        {imagep!==''?<img src={imagep} alt="" style={{with:'100px',height:'100px'}}/>:null}
+    </div>
+    
 {
-    IDP?
+    IDP?<div className="container">
        <Camera
         idealFacingMode = {FACING_MODES.ENVIRONMENT}
-        isFullscreen={true}
+        // isFullscreen={true}
         isMaxResolution = {true}
         onTakePhoto = {(e)=>{
-        setImage(e) 
-        setIDP(false)  
-        setPP(false) 
+            setImage(e) 
+            setIDP(false)  
+            setPP(false) 
         }}
-    />:
-      PP?
+    /></div>:
+      PP?<div className="container">
       <Camera
         idealFacingMode = {FACING_MODES.USER}
-        isFullscreen={true}
+        // isFullscreen={true}
         isMaxResolution = {true}
         onTakePhoto = {(e)=>{
             setImagep(e) 
             setIDP(false)  
             setPP(false) 
             }}
-    />:
+    /> </div>:
     <div className="container d-flex justify-content-center">
     <div className="container-r ">
             <div className="title">Join</div>
@@ -90,6 +82,6 @@ export default function AcceptInvitation() {
         </div>
     </div>
 }
-</div>
+</>
   )
 }
