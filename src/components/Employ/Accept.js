@@ -48,11 +48,6 @@ export default function AcceptInvitation() {
     load?<Loading/>:
     <>
     
-    <div className="container">
-        {image!==''?<img src={image} alt="" style={{with:'100px',height:'100px'}} />:null}
-        {imagep!==''?<img src={imagep} alt="" style={{with:'100px',height:'100px'}}/>:null}
-    </div>
-    
 {
     IDP?<div className="container">
        <Camera
@@ -74,6 +69,12 @@ export default function AcceptInvitation() {
             setPP(false) 
             }}
     /> </div>:
+    <>
+    <div className="container">
+        {image!==''?<img src={image} alt="" style={{with:'100px',height:'100px'}} />:null}
+        {imagep!==''?<img src={imagep} alt="" style={{with:'100px',height:'100px'}}/>:null}
+    </div>
+    
     <div className="container d-flex justify-content-center">
     <div className="container-r ">
             <div className="title">Join</div>
@@ -98,6 +99,7 @@ export default function AcceptInvitation() {
             </div>
         </div>
     </div>
+    </>
 }
 </>
   )
