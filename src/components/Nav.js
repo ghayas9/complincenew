@@ -20,7 +20,7 @@ export default function Nav() {
   const state = useSelector((state)=>state.LogIn)
   return (
   <nav className="navbar navbar-dark navbar-expand-md m-2 mb-4 sticky-top" style={{background:'gray'}}>
-  <Link to={'/'} className="navbar-brand m-0"><h4 >Name</h4></Link>
+  <Link to={'/'} className="navbar-brand m-0"><h4 >AML</h4></Link>
   <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb" aria-expanded="true">
     <span className="navbar-toggler-icon"></span>
   </button>

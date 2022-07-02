@@ -6,7 +6,7 @@ import Register from './components/Register/Register';
 import LogIn from './components/LogIn/LogIn'
 import Home from './components/Home/Home'
 import AcceptInvitation from './components/Employ/Accept';
-
+import Detail from './components/Employ/Detail';
 
 
 
@@ -43,6 +43,8 @@ export default function App() {
       <Route path="/login" element={<LogIn/>}/>
       <Route path="/register" element={<Register />}/>
       <Route path="/acceptInvitation/:token" element={<AcceptInvitation />}/>
+      <Route path="/employee/:id" element={<Detail/>}/>
+
 
 
       {/* <Route path="/home" element={<Home/>}/> */}

@@ -27,16 +27,15 @@ function Home() {
     const [load,setload] = useState(false)
     const getUser = async()=>{
         try{
-              const body = {}
               setload(true)
-              const x = await axios.post('/company/empolyies',body,{
+              const x = await axios.get('/company/empolyees',{},{
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${state.token}`
                 },
                 
               })
-              const data = await x.data.Employies
+              const data = await x.data.Employees
             setUser(data)
             console.log(user);
         }catch(err){
@@ -59,7 +58,7 @@ function Home() {
        <div class="container ">
           <div className="crud shadow-lg p-3 mb-5 mt-5 bg-body rounded"> 
           <div className="row ">
-          <div className="col-md-4 mb-3 text-gred" style={{color:"green"}}><h2><b>All Employies</b></h2></div>
+          <div className="col-md-4 mb-3 text-gred" style={{color:"green"}}><h2><b>All Employees</b></h2></div>
            <div class="col-md-4 mb-3 text-gred">
               <div className="search">
                 <form className="form-inline">
@@ -78,7 +77,7 @@ function Home() {
                  <table class="table table-striped table-hover table-bordered">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>Name</th>
                             <th>Image</th>
                             <th>Email</th>
                             <th>Join</th>
@@ -92,7 +91,10 @@ function Home() {
                         user.map((e,i)=>{
                             return (<tr>
                             <td>{i+1}</td>
-                            <td>{e.name}</td>
+                            <td><img src={e.Profile} alt="" style={{
+                                width:'50px',
+                                height:'50px'
+                            }}/></td>
                             <td>{e.email}</td>
                             <td>{e.updatedAt}</td>
                             <td>

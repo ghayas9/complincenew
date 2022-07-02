@@ -27,7 +27,7 @@ export default function AcceptInvitation() {
     e.preventDefault()
     
         try{
-          const res = await axios.post('/join',{IdCard:image,Profile:imagep,token})
+          const res = await axios.post(`/join/${token}`,{IdCard:image,Profile:imagep})
           alert('add')
           console.log(res);
           
