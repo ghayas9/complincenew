@@ -37,8 +37,8 @@ export default function AcceptInvitation() {
           console.log(res);
           
         }catch(err){
-          alert('error')
-          console.log(err);
+          console.log(err.response.data.message);
+        alert(err.response.data.message);
         } finally{
             setload(false)
         }

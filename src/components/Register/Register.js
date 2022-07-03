@@ -32,7 +32,8 @@ export default function Register() {
             console.log(res);
             action.SuccessMessage({title:'success',txt:res.data.message})
         }catch(err){
-            console.log(err);
+          console.log(err.response.data.message);
+          alert(err.response.data.message);
         }finally{
             setLoad(false)
             //Loading

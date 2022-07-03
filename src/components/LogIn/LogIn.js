@@ -46,7 +46,8 @@ export default function LogIn() {
         action.SuccessMessage({title:'success',txt:'LogIned'})
         action.LogIn(x.data)
       } catch (err) {
-        console.log('err', err.response.data);
+        console.log(err.response.data.message);
+        alert(err.response.data.message);
       } finally {
         setLoad(false)
       }

@@ -70,8 +70,8 @@ function Home() {
           action.SuccessMessage({title:'success',txt:x.data.message})
           getUser()
        }catch(err){
-        alert('Not Deleted')
-        console.log(err);
+        console.log(err.response.data.message);
+        alert(err.response.data.message);
        }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
