@@ -56,7 +56,6 @@ export default function AcceptInvitation() {
         onTakePhoto = {(e)=>{
             setImage(e) 
             setIDP(false)  
-            setPP(false) 
         }}
     /></div>:
       PP?<div className="container">
@@ -65,7 +64,6 @@ export default function AcceptInvitation() {
         isMaxResolution = {true}
         onTakePhoto = {(e)=>{
             setImagep(e) 
-            setIDP(false)  
             setPP(false) 
             }}
     /> </div>:

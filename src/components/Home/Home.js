@@ -6,12 +6,19 @@ import Loading from '../Loading/Loading';
 import React, { useEffect } from 'react'
 
 
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 //////////////GET REDUX//////////////
 import { useSelector } from 'react-redux';
 ///////////////GET REDUX//////////////
 
+///////////////SET REDUX//////////////
+import { useDispatch } from 'react-redux';
+import * as actionCreator from "../../state/Action/action"
+import { bindActionCreators } from 'redux';
+///////////////SET REDUX//////////////
+
 import SendInvitation from './SendInvitation';
+import { host } from '../../Config/constaints';
  
 function Home() {
 
@@ -19,6 +26,10 @@ function Home() {
     ///////////////GET REDUX//////////////
     const state = useSelector((state)=>state.LogIn)
     ///////////////GET REDUX//////////////
+    ///////////////SET REDUX//////////////
+    const dispatch = useDispatch()
+    const action = bindActionCreators(actionCreator, dispatch)
+    ///////////////SET REDUX//////////////
  
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -28,22 +39,40 @@ function Home() {
     const getUser = async()=>{
         try{
               setload(true)
-              const x = await axios.get('/company/empolyees',{},{
+              const x = await axios({
+                method:'get',
+                url:'/company/employees',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${state.token}`
-                },
-                
+                } 
               })
               const data = await x.data.Employees
             setUser(data)
-            console.log(user);
         }catch(err){
             console.log(err);
         }finally{
             setload(false)
         }
         
+    }
+
+    const DeleteUser =async(id)=>{
+       try{
+        const x =  await axios({
+            method:'delete',
+            url:'/company/employees'+id,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${state.token}`
+            } 
+          })
+          action.SuccessMessage({title:'success',txt:x.data.message})
+          getUser()
+       }catch(err){
+        alert('Not Deleted')
+        console.log(err);
+       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(async()=>{
@@ -91,15 +120,18 @@ function Home() {
                         user.map((e,i)=>{
                             return (<tr>
                             <td>{i+1}</td>
-                            <td><img src={e.Profile} alt="" style={{
+                            <td><img src={host+e.Profile} alt="" style={{
                                 width:'50px',
                                 height:'50px'
                             }}/></td>
                             <td>{e.email}</td>
                             <td>{e.updatedAt}</td>
                             <td>
-                                <button className='btn btn-secondary ml-1'><i className="material-icons" style={{color:'#10ab80'}}>&#xE417;</i></button>
-                                <button className='btn btn-secondary ml-1'><i className="material-icons" style={{color:'red'}}>&#xE872;</i> 
+                                <Link to={'/employee/'+e._id} className='btn btn-secondary ml-1' onClick={()=>{
+                                }}><i className="material-icons" style={{color:'#10ab80'}}>&#xE417;</i></Link>
+                                <button className='btn btn-secondary ml-1' onClick={async()=>{
+                                    DeleteUser(e._id)
+                                }}><i className="material-icons" style={{color:'red'}}>&#xE872;</i> 
                                </button>
                                 
                             </td>
