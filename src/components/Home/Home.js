@@ -61,7 +61,7 @@ function Home() {
        try{
         const x =  await axios({
             method:'delete',
-            url:'/company/employees'+id,
+            url:'/company/employees/'+id,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${state.token}`
