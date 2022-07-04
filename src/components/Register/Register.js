@@ -22,21 +22,22 @@ export default function Register() {
 
     const submitData = async(e)=>{
         e.preventDefault()
-        const Url = '/company/register'
-        const data = {name,email,password,contact}
 
         try{
-            //Loading
             setLoad(true)
-            const res = await axios.post(Url,data)
+            const res = await axios({
+              method:'post',
+              url:'/company/register',
+              data:{name,email,password,contact}
+            })
+            
             console.log(res);
             action.SuccessMessage({title:'success',txt:res.data.message})
         }catch(err){
           console.log(err.response.data.message);
-          alert(err.response.data.message);
+          action.ErrorMessage({title:'Error',txt:err.response.data.message})
         }finally{
             setLoad(false)
-            //Loading
         }
     }
     const [name,setName] = useState('')
@@ -47,7 +48,7 @@ export default function Register() {
 
 
     return (
-      load?Loading:
+      load?<Loading/>:
       <div className="container d-flex justify-content-center">
          <div className="container-r ">
           <div className="title">Registration</div>
@@ -74,7 +75,7 @@ export default function Register() {
                 </div>
                 <div className="input-box">
                   <span class="details">Password</span>
-                  <input type="text" placeholder="Enter  password" value={password} onChange={(e)=>{
+                  <input type="password" placeholder="Enter  password" value={password} onChange={(e)=>{
                     setpassword(e.target.value)
                   }}/>
                 </div>

@@ -39,15 +39,18 @@ export default function LogIn() {
   
     const submitData = async (e) => {
       e.preventDefault()
-      const body = { email, password }
       try {
         setLoad(true)
-        const x = await axios.post('/company/login', body)
-        action.SuccessMessage({title:'success',txt:'LogIned'})
+        const x = await axios({
+          method:'post',
+          url:'/company/login',
+          data:{email,password}
+        })
         action.LogIn(x.data)
+        action.SuccessMessage({title:'success',txt:x.data.message})
       } catch (err) {
         console.log(err.response.data.message);
-        alert(err.response.data.message);
+        action.ErrorMessage({title:'Error',txt:err.response.data.message})
       } finally {
         setLoad(false)
       }

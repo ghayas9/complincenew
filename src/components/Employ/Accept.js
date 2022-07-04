@@ -34,11 +34,10 @@ export default function AcceptInvitation() {
             setload(true)
           const res = await axios.post(`/join/${token}`,{IdCard:image,Profile:imagep})
           action.SuccessMessage({title:'success',txt:res.data.message})
-          console.log(res);
-          
+          console.log(res); 
         }catch(err){
-          console.log(err.response.data.message);
-        alert(err.response.data.message);
+        console.log(err.response.data.message);
+        action.ErrorMessage({title:'Error',txt:err.response.data.message})
         } finally{
             setload(false)
         }

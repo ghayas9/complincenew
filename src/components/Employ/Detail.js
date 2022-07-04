@@ -47,8 +47,8 @@ export default function Detail() {
             setdetail(res.data.Employee.verifyData.result);
         }catch(err){
             console.log(err);
+            action.ErrorMessage({title:'Error',txt:'some thing went wrong'})
             // alert(err.respose.data.message)
-            nv('/')
         }finally{
             setload(false)
         }

@@ -1,4 +1,4 @@
-import { LogInC, LogOutC, SuccessMessageC } from "../Constants/Constant"
+import { ErrorMessageC, ErrorMessageT, LogInC, LogOutC, SuccessMessageC, SuccessMessageT } from "../Constants/Constant"
 
 export const LogIn = (data) => {
     return (dispatch) => {
@@ -28,7 +28,23 @@ export const SuccessMessage = (data) => {
 export const SuccessMessageTimeOut = () => {
     return (dispatch) => {
         dispatch({
-            type: 'SuccessMessageT',
+            type: SuccessMessageT,
+        })
+    }
+}
+
+export const ErrorMessage = (data) => {
+    return (dispatch) => {
+        dispatch({
+            type: ErrorMessageC,
+            payload: data
+        })
+    }
+}
+export const ErrorMessageTimeOut = () => {
+    return (dispatch) => {
+        dispatch({
+            type: ErrorMessageT,
         })
     }
 }

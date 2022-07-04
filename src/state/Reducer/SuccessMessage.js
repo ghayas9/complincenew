@@ -8,7 +8,7 @@ const SuccessMessage = (state = init , action) =>{
         return null
     }
     else{ 
-        return state
+        return null
     }
 }
 

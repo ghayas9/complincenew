@@ -5,12 +5,12 @@ import { useNavigate ,Link} from 'react-router-dom';
 
 ///////////////SET REDUX//////////////
 import { useDispatch } from 'react-redux';
-import * as actionCreator from "../state/Action/action"
+import * as actionCreator from "../../state/Action/action"
 import { bindActionCreators } from 'redux';
 ///////////////SET REDUX//////////////
 
-export default function Nav() {
-
+export default function NavBar() {
+  
   ///////////////SET REDUX//////////////
   const dispatch = useDispatch()
   const action = bindActionCreators(actionCreator,dispatch)
