@@ -50,7 +50,9 @@ export default function AcceptInvitation() {
         width = {100 + '%'}
         videoConstraints={{
           facingMode: {
-            exact: 'environment'
+            exact: 'environment',
+          
+
           }
         }}
         />
@@ -67,9 +69,9 @@ export default function AcceptInvitation() {
       screenshotFormat="image/jpeg"
       width = {100 + '%'}
       videoConstraints={
-
         {
-        facingMode: "user"
+          facingMode: "user",
+          screenshotQuality: 1
       }
     }
 

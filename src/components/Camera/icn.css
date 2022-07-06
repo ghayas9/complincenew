@@ -1,0 +1,19 @@
+.cam{
+    position: relative;
+}
+.cam-icn{
+    bottom: 10px;
+    left:50%;
+    
+}
+.cam-switch{
+    top: 30px;
+    left: 50px;
+}
+.cam-icn , .cam-switch{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    border: 3px solid wheat;
+    border-radius: 100%;
+    padding: 10px 15px;
+}

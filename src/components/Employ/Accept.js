@@ -9,11 +9,15 @@ import Camera, { FACING_MODES } from 'react-html5-camera-photo';
 import { useDispatch } from 'react-redux';
 import * as actionCreator from "../../state/Action/action"
 import { bindActionCreators } from 'redux';
+import { useEffect } from 'react';
+import WebCam from '../Camera/WebCam';
 ///////////////SET REDUX//////////////
 
 
 export default function AcceptInvitation() {
-
+      useEffect(()=>{
+        console.log(FACING_MODES.USER );
+      })
         ///////////////SET REDUX//////////////
         const dispatch = useDispatch()
         const action = bindActionCreators(actionCreator, dispatch)
@@ -23,6 +27,10 @@ export default function AcceptInvitation() {
     const [load,setload] = useState(false)
     const [IDP,setIDP]= useState(false)
     const [PP,setPP]= useState(false)
+    const offCam = ()=>{
+      setIDP(false)
+      setPP(false)
+    }
 
     const [image,setImage]=useState('')
     const [imagep,setImagep]=useState('')
@@ -46,26 +54,12 @@ export default function AcceptInvitation() {
   return (
     load?<Loading/>:
     <>
-    
 {
-    IDP?<div className="container">
-       <Camera
-        idealFacingMode = {FACING_MODES.ENVIRONMENT}
-        isMaxResolution = {true}
-        onTakePhoto = {(e)=>{
-            setImage(e) 
-            setIDP(false)  
-        }}
-    /></div>:
-      PP?<div className="container">
-      <Camera
-        idealFacingMode = {FACING_MODES.USER}
-        isMaxResolution = {true}
-        onTakePhoto = {(e)=>{
-            setImagep(e) 
-            setPP(false) 
-            }}
-    /> </div>:
+    IDP?
+    <WebCam setImage={setImage} facingMode={'environment'} offCam={offCam}/>
+    :
+    PP?
+    <WebCam setImage={setImagep} facingMode={'user'} offCam={offCam}/>:
     <>
     <div className="container">
         {image!==''?<img src={image} alt="" style={{with:'100px',height:'100px'}} />:null}

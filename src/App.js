@@ -10,6 +10,9 @@ import Error from './components/Model/Error';
 import Success from './components/Model/Success';
 import NavBar from './components/NavBar/NavBar';
 
+import AcceptInvitation1 from './components/Employ/AcceptInvitation';
+import WebCam from './components/Camera/WebCam';
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export default function App() {
@@ -25,7 +28,12 @@ export default function App() {
       <Route path="/login" element={<LogIn/>}/>
       <Route path="/register" element={<Register />}/>
       <Route path="/acceptInvitation/:token" element={<AcceptInvitation />}/>
+      <Route path="/acceptInvitation1/:token" element={<AcceptInvitation1 />}/>
       <Route path="/employee/:id" element={<Detail/>}/>
+
+
+
+      <Route path="/cam" element={<WebCam/>}/>
 
       {/* <Route path="/home" element={<Home/>}/> */}
     <Route path="*" element={<h1>PAGE NOT FOUND</h1>} />
